@@ -41,9 +41,9 @@ Views: Razor views for rendering the UI (List.cshtml, Add.cshtml, Edit.cshtml).
 Controllers: Handles user requests (ProductsController).
 ________________________________________
 Sample Screenshots
-Product List View: Displays all products in the database.
-Add Product Form: Allows users to create new products.
-Edit Product Form: Enables updating existing product details.
+Product List View:  
+Add Product Form:  
+Edit Product Form: 
 ________________________________________
 Key Learning Points
 ASP.NET Core MVC: Implementing the MVC pattern for web applications.
