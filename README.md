@@ -17,9 +17,9 @@ Tools: Visual Studio, GitHub
 ________________________________________
 Installation and Setup
 Prerequisites
-.NET SDK: Download and install.
+.NET SDK: Download and install from here.
 SQL Server: Download and set up SQL Server with SSMS.
-Visual Studio: Download and install.
+Visual Studio: Download and install from here.
 Steps to Run Locally
 Clone the repository:
 git clone https://github.com/NareshPoudel1/CRUDapp.git
