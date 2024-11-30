@@ -41,7 +41,7 @@ Views: Razor views for rendering the UI (List.cshtml, Add.cshtml, Edit.cshtml).
 Controllers: Handles user requests (ProductsController).
 ________________________________________
 Sample Screenshots
-Product List View:  
+Product List View:  https://github.com/NareshPoudel1/CRUDapp/blob/master/.gitattributes
 Add Product Form:  
 Edit Product Form: 
 ________________________________________
