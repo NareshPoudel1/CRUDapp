@@ -1,0 +1,33 @@
+﻿@model List<CRUDapp.Models.Entities.Product>
+
+<h1>Products</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Actions</th> <!-- Correctly completed header -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.Quantity</td>
+                <td>
+                    <a asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id">Edit</a>
+                    
+                    <form asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id" method="post" style="display:inline">
+                        <button type="submit" class="btn ">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

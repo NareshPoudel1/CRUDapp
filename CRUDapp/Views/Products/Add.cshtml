@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    below step 0.01 for taking decimal value and min=0 to not take - ve value , similarly for min = 1 to not take -ve value for quantity
+    @* creating add check box to add to the database of entered products and then creating submit button(save) to record the filled information and send this information to http post method *@
+@* asp-for-->helper is used to bind a form input field to a model property. 
+@{
+}
+@* binding the model to cshtml, and by writing the below code we will access the properties of viewmodel inside the cshtml fjile *@
+
+@model CRUDapp.Models.AddProductViewModel
+
+<h1>Add Products</h1>
+
+<form method="post">
+
+    <div class="mt-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" asp-for="Name"/>
+    </div>
+
+    <div class="mt-3">
+        <label class="form-label">Price</label>
+        <input type="number" class="form-control" step="0.01" min="0" asp-for="Price"/>
+    </div>
+
+    <div class="mt-3">
+        <label class="form-label">Quantity</label>
+        <input type="number" class="form-control" min="1" asp-for="Quantity"/>
+    </div>
+
+    @* <div class="mt-3"> *@
+    @*     <input type="checkbox" class="form-check-input" id="Save" asp-for="Save" /> *@
+    @*     <label class="form-check-label" for="Save">Save</label> *@
+    @* </div> *@
+
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+</form>
