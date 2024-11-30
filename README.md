@@ -40,11 +40,6 @@ Models: Defines data structure (Product model).
 Views: Razor views for rendering the UI (List.cshtml, Add.cshtml, Edit.cshtml).
 Controllers: Handles user requests (ProductsController).
 ________________________________________
-Sample Screenshots
-Product List View:  https://github.com/NareshPoudel1/CRUDapp/blob/master/.gitattributes
-Add Product Form:  
-Edit Product Form: 
-________________________________________
 Key Learning Points
 ASP.NET Core MVC: Implementing the MVC pattern for web applications.
 Entity Framework Core: Managing database operations with EF Core.
