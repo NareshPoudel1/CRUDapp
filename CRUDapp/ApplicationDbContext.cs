@@ -9,7 +9,7 @@ namespace CRUDapp
         { 
         
         }
-            public DbSet<Product> Products { get; set; }//Represents the Products table in the database; allows querying and saving instances of the Product entity.
+            public DbSet<Product> Products { get; set; }
     }
 
 
