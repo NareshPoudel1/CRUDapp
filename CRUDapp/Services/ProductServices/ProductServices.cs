@@ -30,7 +30,7 @@ namespace CRUDapp.Services.ProductServices
             }
         }
 
-        public async Task<IEnumerable<Product>> GetAllProducts()
+        public async Task<IEnumerable<Product>> GetAllProducts()//>> is part of the generic type syntax used to define that the method will return a Task that resolves to IEnumerable<Product>.
         {
             return await _context.Products.ToListAsync();
         }
