@@ -3,10 +3,10 @@ CRUDapp
 A simple CRUD application for managing products, developed using ASP.NET Core MVC. The application demonstrates different approaches for implementing CRUD operations, including the use of dependency injection and stored procedures.
 
 
-Branches Overview
+#Branches Overview
 
 
-master Branch
+#master Branch
 
 
 This branch contains the basic CRUD operations implemented in the controller directly, interacting with the database using ApplicationDbContext.
@@ -41,7 +41,7 @@ o	A ViewModel used for adding new products.
 o	Contains Razor views for displaying and interacting with the product data (Add, Edit, List).
 
 	
-feat/DI Branch
+#feat/DI Branch
 
 
 This branch updates the code to use Dependency Injection.
@@ -68,7 +68,7 @@ o	Implements the IProductServices interface and contains the actual logic for in
 o	Refactored to use IProductServices instead of directly interacting with ApplicationDbContext.
 
 
-feat/storedprocedure Branch
+#feat/storedprocedure Branch
 
 
 This branch contains stored procedure code for CRUD operations.
@@ -159,7 +159,7 @@ oUpdate the connection string in appsettings.json to match your SQL Server confi
 5.	Run the Application
 	
 
-Folder and File Overview
+#Folder and File Overview
 
 
 Controllers/
