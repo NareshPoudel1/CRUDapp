@@ -1,5 +1,4 @@
 ﻿using CRUDapp.Models.Entities;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -15,57 +14,36 @@ namespace CRUDapp.Services.ProductServices
             _context = context;
         }
 
-        // Add product using SpAddProduct
         public async Task AddProduct(Product product)
         {
-            var parameters = new[]
-            {
-                new SqlParameter("@Id", product.Id),
-                new SqlParameter("@Name", product.Name),
-                new SqlParameter("@Price", product.Price),
-                new SqlParameter("@Quantity", product.Quantity)
-            };
-
-            await _context.Database.ExecuteSqlRawAsync("EXEC SpAddProduct @Id, @Name, @Price, @Quantity", parameters);
+            await _context.Products.AddAsync(product);
+            await _context.SaveChangesAsync();
         }
-        // Delete product using SpDeleteProduct
+
         public async Task DeleteProduct(Guid id)
         {
-            var param = new SqlParameter("@Id", id);
-            await _context.Database.ExecuteSqlRawAsync("EXEC SpDeleteProduct @Id", param);
+            var product = await GetProductById(id);
+            if (product != null)
+            {
+                _context.Products.Remove(product);
+                await _context.SaveChangesAsync();
+            }
         }
 
-        //Get all products using SpGetAllProducts
-        public async Task<IEnumerable<Product>> GetAllProducts()
+        public async Task<IEnumerable<Product>> GetAllProducts()//>> is part of the generic type syntax used to define that the method will return a Task that resolves to IEnumerable<Product>.
         {
-            return await _context.Products
-                 .FromSqlRaw("EXEC SpGetAllProducts")
-                 .ToListAsync();
+            return await _context.Products.ToListAsync();
         }
-
-        //Get product by ID using SpGetProductById
 
         public async Task<Product> GetProductById(Guid id)
         {
-            var param = new SqlParameter("@Id", id);
-            return await _context.Products
-                 .FromSqlRaw("EXEC SpaGetProductById @Id", param)
-                 .FirstOrDefaultAsync();
-
+            return await _context.Products.FindAsync(id);
         }
 
-        // Update product using SpUpdateProduct
         public async Task UpdateProduct(Product product)
         {
-            var parameters = new[]
-            {
-                new SqlParameter("@Id", product.Id),
-                new SqlParameter("@Name", product.Name),
-                new SqlParameter("@Price", product.Price),
-                new SqlParameter("@Quantity", product.Quantity)
-            };
-
-            await _context.Database.ExecuteSqlRawAsync("EXEC SpUpdateProduct @Id, @Name, @Price, @Quantity", parameters);
+            _context.Products.Update(product);
+            await _context.SaveChangesAsync();
         }
     }
 }
