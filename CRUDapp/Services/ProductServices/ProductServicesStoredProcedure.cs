@@ -1,32 +1,67 @@
 ﻿using CRUDapp.Models.Entities;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace CRUDapp.Services.ProductServices
 {
     public class ProductServicesStoredProcedure : IProductServices
     {
-        public Task AddProduct(Product product)
+        private readonly ApplicationDbContext _context;
+        public ProductServicesStoredProcedure(ApplicationDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+        // Add product using SpAddProduct
+        public async Task AddProduct(Product product)
+        {
+            var parameters = new[]
+            {
+                new SqlParameter("@Id", product.Id),
+                new SqlParameter("@Name", product.Name),
+                new SqlParameter("@Price", product.Price),
+                new SqlParameter("@Quantity", product.Quantity)
+            };
+
+            await _context.Database.ExecuteSqlRawAsync("EXEC SpAddProduct @Id, @Name, @Price, @Quantity", parameters);
+        }
+        // Delete product using SpDeleteProduct
+        public async Task DeleteProduct(Guid id)
+        {
+            var param = new SqlParameter("@Id", id);
+            await _context.Database.ExecuteSqlRawAsync("EXEC SpDeleteProduct @Id", param);
         }
 
-        public Task DeleteProduct(Guid id)
+        //Get all products using SpGetAllProducts
+        public async Task<IEnumerable<Product>> GetAllProducts()
         {
-            throw new NotImplementedException();
+            return await _context.Products
+                 .FromSqlRaw("EXEC SpGetAllProducts")
+                 .ToListAsync();
         }
 
-        public Task<IEnumerable<Product>> GetAllProducts()
+        //Get product by ID using SpGetProductById
+
+        public async Task<Product> GetProductById(Guid id)
         {
-            throw new NotImplementedException();
+            var param = new SqlParameter("@Id", id);
+            return await _context.Products
+                 .FromSqlRaw("EXEC SpaGetProductById @Id", param)
+                 .FirstOrDefaultAsync();
+
         }
 
-        public Task<Product> GetProductById(Guid id)
+        // Update product using SpUpdateProduct
+        public async Task UpdateProduct(Product product)
         {
-            throw new NotImplementedException();
-        }
+            var parameters = new[]
+            {
+                new SqlParameter("@Id", product.Id),
+                new SqlParameter("@Name", product.Name),
+                new SqlParameter("@Price", product.Price),
+                new SqlParameter("@Quantity", product.Quantity)
+            };
 
-        public Task UpdateProduct(Product product)
-        {
-            throw new NotImplementedException();
+            await _context.Database.ExecuteSqlRawAsync("EXEC SpUpdateProduct @Id, @Name, @Price, @Quantity", parameters);
         }
     }
 }
