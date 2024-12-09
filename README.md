@@ -6,64 +6,62 @@ master Branch
 This branch contains the basic CRUD operations implemented in the controller directly, interacting with the database using ApplicationDbContext.
 Key files in this branch:
 1.Controllers/ProductsController.cs
-oHandles HTTP requests for adding, editing, deleting, and listing products.
-oDirectly uses ApplicationDbContext for database operations.
+o Handles HTTP requests for adding, editing, deleting, and listing products.
+o Directly uses ApplicationDbContext for database operations.
 
 2.Models/Entities/Product.cs
-oRepresents the Product entity with properties such as Id, Name, Price, and Quantity.
+o Represents the Product entity with properties such as Id, Name, Price, and Quantity.
 
 3.Models/AddProductViewModel.cs
-oA ViewModel used for adding new products.
+o A ViewModel used for adding new products.
 
 4.Views/
-oContains Razor views for displaying and interacting with the product data (Add, Edit, List).
+o Contains Razor views for displaying and interacting with the product data (Add, Edit, List).
 
 feat/DI Branch
 This branch updates the code to use Dependency Injection.
 Key additions in this branch:
 1.Services/IProductServices.cs
-oInterface defining the methods for CRUD operations (GetAllProducts, GetProductById, AddProduct, UpdateProduct, DeleteProduct).
+o Interface defining the methods for CRUD operations (GetAllProducts, GetProductById, AddProduct, UpdateProduct, DeleteProduct).
 
 2.Services/ProductServices.cs
-oImplements the IProductServices interface and contains the actual logic for interacting with the database.
+o Implements the IProductServices interface and contains the actual logic for interacting with the database.
 
 3.Controllers/ProductsController.cs
-oRefactored to use IProductServices instead of directly interacting with ApplicationDbContext.
+o Refactored to use IProductServices instead of directly interacting with ApplicationDbContext.
 
 feat/storedprocedure Branch
-
 This branch contains stored procedure code for CRUD operations.
 Key additions in this branch:
 1.Services/ProductServicesStoredProcedure.cs
-oImplements IProductServices using stored procedures for database operations.
+o Implements IProductServices using stored procedures for database operations.
 
 2.Stored Procedures (in SQL Server):
-oSpGetAllProducts – Retrieves all products from the database.
-oSpGetProductById – Retrieves a product by its ID.
-oSpAddProduct – Adds a new product to the database.
-oSpUpdateProduct – Updates an existing product in the database.
-oSpDeleteProduct – Deletes a product from the database.
+o SpGetAllProducts – Retrieves all products from the database.
+o SpGetProductById – Retrieves a product by its ID.
+o SpAddProduct – Adds a new product to the database.
+o SpUpdateProduct – Updates an existing product in the database.
+o SpDeleteProduct – Deletes a product from the database.
 
 3.Controllers/ProductsController.cs
-oUpdated to use ProductServicesStoredProcedure for CRUD operations.
+o Updated to use ProductServicesStoredProcedure for CRUD operations.
 
 Setup Instructions
-
 1.Clone the Repository
-git clone <repository-url>,cd CRUDapp
+ git clone <repository-url>,cd CRUDapp
 2.Switch Between Branches
-oTo view the basic CRUD operations:
-git checkout master
+o To view the basic CRUD operations:
+ git checkout master
 oTo view the DI implementation:
-git checkout feat/DI
-oTo view the stored procedure implementation:
-git checkout feat/storedprocedure
+ git checkout feat/DI
+o To view the stored procedure implementation:
+ git checkout feat/storedprocedure
 3.Update Database Connection
-oUpdate the connection string in appsettings.json to match your SQL Server configuration.
+o Update the connection string in appsettings.json to match your SQL Server configuration.
 
 4.Apply Migrations
-Add -Migration
-Update -Database
+ Add -Migration
+ Update -Database
 
 5.Run the Application
 
