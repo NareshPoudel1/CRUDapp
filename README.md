@@ -24,8 +24,9 @@ o	Interface defining the methods for CRUD operations (GetAllProducts, GetProduct
 o	Implements the IProductServices interface and contains the actual logic for interacting with the database.
 3.	Controllers/ProductsController.cs
 o	Refactored to use IProductServices instead of directly interacting with ApplicationDbContext.
-________________________________________
+
 feat/storedprocedure Branch
+
 This branch contains stored procedure code for CRUD operations.
 Key additions in this branch:
 1.	Services/ProductServicesStoredProcedure.cs
@@ -60,15 +61,18 @@ o	Update the connection string in appsettings.json to match your SQL Server conf
 5.	Run the Application
 
 Folder and File Overview
+
 Controllers/
 •	ProductsController.cs
 Handles HTTP requests for product management. The implementation changes across branches to demonstrate different approaches (direct DBContext, DI, stored procedures).
 Models/Entities/
 •	Product.cs
 Represents the product table in the database with properties like Id, Name, Price, and Quantity.
+
 Models/
 •	AddProductViewModel.cs
 A ViewModel used for passing data from the view to the controller when adding a new product.
+
 Services/
 •	IProductServices.cs
 Interface defining CRUD methods for product management (added in feat/DI branch).
