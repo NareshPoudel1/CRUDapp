@@ -1,6 +1,5 @@
 using CRUDapp;
-using CRUDapp.Services.ProductServices;
-using CRUDapp.Services;
+
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,8 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Register ProductServices as the implementation of IProductServices
-builder.Services.AddScoped<IProductServices, ProductServices>();
+
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => 
 options.UseSqlServer(builder.Configuration.GetConnectionString("ProductBegins")));//This takes key-name(ProductBegins) that we define in appsettings.jason or This code sets up the ApplicationDbContext to connect to a SQL Server database using a connection string defined in the application's configuration (e.g., appsettings.json). It registers the database context with the dependency injection container, so it can be injected wherever needed in the application.
